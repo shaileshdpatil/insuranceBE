@@ -21,6 +21,9 @@ app.use("/api",insurancerouter);
 app.use("/api/master",masterrouter);
 app.use('/api/lead', leadrouter);
 app.use('/api/ilead', ileadrouter);
+app.get('/test', (req,res)=>{
+    res.json({name:'shailesh'})
+});
 
 app.use(errorMiddleware);
 const PORT = 5000;
