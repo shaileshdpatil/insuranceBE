@@ -81,7 +81,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
               "NoOfSeats": 6,
               "EngineNo": "EngineNo",
               "ChassisNo": "ChassisNo",
-              "CubicCapacity": Number(enginecapacity),
+              "CubicCapacity": 15001,
               "VehicleValue": 5000,
               "Trailer": 1000,
               "LeaseCompany": "LeaseCompany",
