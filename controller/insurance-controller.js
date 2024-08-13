@@ -3,6 +3,8 @@ const axios = require('axios');
 const apiUrl = process.env.INURL;
 const getinsurancepackages = async (req, res) => {
   const { enginecapacity, suminsured } = req.body;
+  console.log(suminsured);
+  
   try {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -42,11 +44,10 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
   try {
     // Define the API URL
     const apiUrl = 'https://grandiosesg-gimc.insuremo.com/proposal/v1/application';
-    console.log(authToken, enginecapacity, suminsured);
 
     // Data to be sent in the request body
     const requestData = {
-      "ProductCode": "CMOTOR",
+      "ProductCode": "VPC0001",
       "ProductVersion": "1.0",
       "VehicleType": "2",
       "EffectiveDate": "2022-12-26",
@@ -69,7 +70,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
       ],
       "PolicyLobList": [
         {
-          "ProductCode": "CMOTOR",
+          "ProductCode": "VPC0001",
           "PolicyRiskList": [
             {
               "ProductElementCode": "R00004",
@@ -80,9 +81,8 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
               "NoOfSeats": 6,
               "EngineNo": "EngineNo",
               "ChassisNo": "ChassisNo",
-              "CubicCapacity": 15001,
+              "CubicCapacity": enginecapacity,
               "VehicleValue": 5000,
-              "EngineCapacity": enginecapacity,
               "Trailer": 1000,
               "LeaseCompany": "LeaseCompany",
               "PlotNo": "PlotNo",
@@ -103,7 +103,6 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
               "PrevDate": "2022-12-26",
               "SumInsured": suminsured,
               "PolicyCoverageList": [
-
                 {
                   "ProductElementCode": "BASIC"
                 },
