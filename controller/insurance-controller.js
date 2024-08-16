@@ -19,8 +19,8 @@ const getinsurancepackages = async (req, res) => {
 
     // Data to be sent in the request body
     const requestData = {
-      username: 'Grandiose.User',
-      password: 'Grandiose@1'
+      username: 'Grandiose.User1',
+      password: 'Grandiose@2023'
     };
 
     // Make a POST request to the API with data in the request body
@@ -47,102 +47,69 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
 
     // Data to be sent in the request body
     const requestData = {
-      "ProductCode": "VPC0001",
+      "ProductCode": "VPC001",
       "ProductVersion": "1.0",
-      "VehicleType": "2",
-      "EffectiveDate": "2022-12-26",
-      "ExpiryDate": "2023-12-25",
+      "EffectiveDate": "2024-04-26",
+      "ExpiryDate": "2025-04-25",
+      "PlanType": "COMP",
       "PolicyCustomerList": [
         {
-          "ProposerName": "ProposerName",
-          "NRCNo": 1111,
-          "BuildingHouseName": "xxx",
-          "StreetName": "ssaf",
-          "Township": "Township",
-          "City": "City",
-          "State": "State",
-          "CountryCode": "CountryCode",
-          "Mobile": 9999999,
-          "Email": "Email",
-          "ContactFax": "FaxNo",
-          "Occupation": "Occupation"
+          "ProposerName": "Customer Name",
+          "IsInsured": "Y",
+          "IsPolicyHolder": "Y",
+          "IsOrgParty": "Y",
+          "Mobile": "1234567876",
+          "Email": "test@test.com",
+          "Address": "Test",
+          "Occupation": "Doctor",
+          "Phone": "1234567"
         }
       ],
       "PolicyLobList": [
         {
-          "ProductCode": "VPC0001",
+          "ProductCode": "VPC001",
           "PolicyRiskList": [
             {
               "ProductElementCode": "R00004",
-              "RegistrationNo": "RegistrationNo",
-              "MakeAndModel": "MakeAndModel",
-              "TypeofBody": "TypeofBody",
-              "YearofManufacture": "2023-12-25",
-              "NoOfSeats": 6,
-              "EngineNo": "EngineNo",
-              "ChassisNo": "ChassisNo",
-              "CubicCapacity": 15001,
-              "VehicleValue": 5000,
-              "Trailer": 1000,
-              "LeaseCompany": "LeaseCompany",
-              "PlotNo": "PlotNo",
-              "BuildingHouseName": "BuildingHouseName",
-              "StreetName": "StreetName",
-              "Township": "Township",
-              "City": "City",
-              "IsEngineModified": "0",
-              "PrevPolicyNo": "PrevPolicyNo",
-              "PrevRegistrationNo": "RegistrationNo",
-              "WillAnyoneDrive": "WillAnyoneDrive",
-              "PrevDeclined": "1",
-              "AnyPrevPremium": 1000,
-              "AnyLoss": "AnyLoss",
-              "PrevMarketValue": 1000,
-              "PrevAgreementValue": "111",
-              "PrevUnderInsured": "PrevUnderInsured",
-              "PrevDate": "2022-12-26",
-              "SumInsured": suminsured,
-              "PolicyCoverageList": [
+              "EngineNo": "PK12344444444",
+              "Make": "317",
+              "Model": "37222",
+              "ManufactureDate": "2021-09-08",
+              "ChassisNo": "CN1122222333",
+              "RegistrationNo": "MK12322222",
+              "EngineCapacity": enginecapacity,
+              "IsVehiclePurchaseWithTaxAllowance": "Y",
+              "IsVehiclePartAlteredFromOriginalSpec": "Y",
+              "DetailsOfAlteredVehicleSpec": "fdsfdsfsdf",
+              "InLast3YearsAnyLossesOrClaim": "N",
+              "ClaimsDescription": "",
+              "VehicleDrivenBy": "fdsfdsf",
+              "LicenseRevoked": "Y",
+              "LicenseRevokedReason": "fsdfdsf",
+              "VehicleUsed24Hrs": "Y",
+              "DoYouHaveALoanOrFinanceOnThisVehicle": "Y",
+              "WorkingHrsIncludeTravelToFromWork": "Y",
+              "WithinPhnomPenh": "Y",
+              "SocialDomesticPleasure": "Y",
+              "InConnectionOccupationBusiness": "Y",
+              "Other": "fdsfdsf",
+              "PlaceOfVehicleParkedAtNight": "fdsfdsf",
+              "VehicleParked": "fdsfdsf",
+              "IsYourCarWellMaintained": "fdsfdsf",
+              "CommercialAdPaintVehicle": "Y",
+              "PaintingValue": "1000",
+              "DiscountType": "NCD",
+              "SumInsuredOption": suminsured,
+              "DriverExperience": "5",
+              "DrivingLicenceType": "LIGHT",
+              "PrevInsuranceList": [
                 {
-                  "ProductElementCode": "BASIC"
-                },
-                {
-                  "ProductElementCode": "C0000532"
-                },
-                {
-                  "ProductElementCode": "WINDSC",
-                  "WindScreenValue": 1000
-                },
-                {
-                  "ProductElementCode": "SRCC01"
-                },
-                {
-                  "ProductElementCode": "AOG01"
-                },
-                {
-                  "ProductElementCode": "WARRSK"
-                },
-                {
-                  "ProductElementCode": "BTRMNT"
-                },
-                {
-                  "ProductElementCode": "THEFT"
-                },
-                {
-                  "ProductElementCode": "DEDUCT"
+                  "IsCurrentPolicyAvailable": "Y",
+                  "PreviousPolicyInsuranceCompany": "DIGIT",
+                  "PrevPolicyExpiryDate": "2021-09-08",
+                  "PrevPolicyNCB": "20"
                 }
               ]
-            }
-          ],
-          "PersonList": [
-            {
-              "DriverName": "DriverName",
-              "DriverNRC": "DriverNRC",
-              "DriverAge": "26",
-              "DriverLicenseNo": "999",
-              "DriverYear": "2022-12-26",
-              "HasConvicted": "1",
-              "DriverRelwithProposer": "DriverRelwithProposer"
             }
           ]
         }
