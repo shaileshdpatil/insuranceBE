@@ -68,6 +68,8 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
       "PolicyLobList": [
         {
           "ProductCode": "VPC001",
+          "ProductElementCode": "VPC001",
+          "SumInsured": suminsured,
           "PolicyRiskList": [
             {
               "ProductElementCode": "R00004",
@@ -99,7 +101,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
               "CommercialAdPaintVehicle": "Y",
               "PaintingValue": "1000",
               "DiscountType": "NCD",
-              "SumInsuredOption": suminsured,
+              "SumInsuredOption": "1",
               "DriverExperience": "5",
               "DrivingLicenceType": "LIGHT",
               "PrevInsuranceList": [
