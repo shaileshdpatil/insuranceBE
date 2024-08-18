@@ -1,10 +1,20 @@
 const mongoose = require('mongoose');
 const axios = require('axios');
 const apiUrl = process.env.INURL;
+
+function getPosition(number) {
+  const start = 10000;
+  const increment = 1000;
+
+  if (number < start || number > 75000 || (number - start) % increment !== 0) {
+    return 'Number out of range or not valid.';
+  }
+  return ((number - start) / increment) + 1;
+}
+
 const getinsurancepackages = async (req, res) => {
   const { enginecapacity, suminsured } = req.body;
-  console.log(suminsured);
-  
+
   try {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -54,7 +64,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
       "PlanType": "COMP",
       "PolicyCustomerList": [
         {
-          "ProposerName": "Customer Name",
+          "ProposerName": "Customer Name",
           "IsInsured": "Y",
           "IsPolicyHolder": "Y",
           "IsOrgParty": "Y",
@@ -68,8 +78,6 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
       "PolicyLobList": [
         {
           "ProductCode": "VPC001",
-          "ProductElementCode": "VPC001",
-          "SumInsured": suminsured,
           "PolicyRiskList": [
             {
               "ProductElementCode": "R00004",
@@ -101,7 +109,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
               "CommercialAdPaintVehicle": "Y",
               "PaintingValue": "1000",
               "DiscountType": "NCD",
-              "SumInsuredOption": "1",
+              "SumInsuredOption": getPosition(suminsured),
               "DriverExperience": "5",
               "DrivingLicenceType": "LIGHT",
               "PrevInsuranceList": [
