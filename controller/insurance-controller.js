@@ -49,17 +49,17 @@ const getinsurancepackages = async (req, res) => {
   }
 }
 const sendRequest = async (authToken, request) => {
-  const { enginecapacity, suminsured , PlanType } = request;
+  const { enginecapacity, suminsured , PlanType , startDate } = request;
 
   try {
-    // Define the API URL
     const apiUrl = 'https://grandiosesg-gimc.insuremo.com/proposal/v1/application';
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
 
-    // Data to be sent in the request body
     const requestData = {
       "ProductCode": "VPC001",
       "ProductVersion": "1.0",
-      "EffectiveDate": "2024-04-26",
+      "EffectiveDate": startDate ? startDate : formattedDate,
       "ExpiryDate": "2025-04-25",
       "PlanType": PlanType,
       "PolicyCustomerList": [
