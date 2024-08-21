@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const axios = require('axios');
-const apiUrl = process.env.INURL;
+const fs = require('fs');
 
 function getPosition(number) {
   const start = 10000;
@@ -13,8 +13,6 @@ function getPosition(number) {
 }
 
 const getinsurancepackages = async (req, res) => {
-  const { enginecapacity, suminsured } = req.body;
-
   try {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -42,7 +40,7 @@ const getinsurancepackages = async (req, res) => {
 
 
     // Send the response back to the client
-    const result = await sendRequest(response.data.access_token, enginecapacity, suminsured);
+    const result = await sendRequest(response.data.access_token, req.body);
     res.status(200).json({ result: result });
   } catch (error) {
     // Handle errors
@@ -50,7 +48,9 @@ const getinsurancepackages = async (req, res) => {
     res.status(500).json({ message: "Error fetching insurance packages", error: error.message });
   }
 }
-const sendRequest = async (authToken, enginecapacity, suminsured) => {
+const sendRequest = async (authToken, request) => {
+  const { enginecapacity, suminsured , PlanType } = request;
+
   try {
     // Define the API URL
     const apiUrl = 'https://grandiosesg-gimc.insuremo.com/proposal/v1/application';
@@ -61,7 +61,7 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
       "ProductVersion": "1.0",
       "EffectiveDate": "2024-04-26",
       "ExpiryDate": "2025-04-25",
-      "PlanType": "COMP",
+      "PlanType": PlanType,
       "PolicyCustomerList": [
         {
           "ProposerName": "Customer Name",
@@ -144,4 +144,4 @@ const sendRequest = async (authToken, enginecapacity, suminsured) => {
     throw new Error('Failed to send request');
   }
 };
-module.exports = { getinsurancepackages, sendRequest };  
+module.exports = { getinsurancepackages, sendRequest };
