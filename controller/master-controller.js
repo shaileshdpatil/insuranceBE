@@ -69,8 +69,8 @@ const getcmotor= async(req,res)=>{
         const apiUrl = `${baseUrl}/cas/ebao/v1/json/tickets`;
       // Data to be sent in the request body
         const requestData = {
-            username: 'Grandiose.User1',
-            password: 'Grandiose@2023'
+            username: 'Grandiose.User',
+            password: 'Grandiose@12'
         };  
         // Make a POST request to the API with data in the request body
 
