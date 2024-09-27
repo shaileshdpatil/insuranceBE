@@ -20,21 +20,23 @@ const getinsurancepackages = async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     // Define the base URL of the API
-    const baseUrl = 'https://grandiosesg-gimc.insuremo.com';
+    const baseUrl = 'https://grandiosesg-sandbox-sg.insuremo.com';
 
     // Append the endpoint to the base URL
-    const apiUrl = `${baseUrl}/v1/json/tickets`;
+    const apiUrl = `${baseUrl}/cas/ebao/v2/json/tickets`;
 
     // Data to be sent in the request body
     const requestData = {
-      username: 'Grandiose.User1',
-      password: 'Grandiose@2023'
+      username: 'Grandiose.User',
+      password: 'Grandiose@12'
     };
 
     // Make a POST request to the API with data in the request body
     const response = await axios.post(apiUrl, requestData, {
       headers: {
-        'Content-Type': 'application/json'
+        'x-mo-client-id':"key",
+        'x-mo-tenant-id':"grandiosesg",
+        'x-mo-user-source-id':"platform",
       }
     });
 
@@ -52,7 +54,7 @@ const sendRequest = async (authToken, request) => {
   const { enginecapacity, suminsured , PlanType , startDate } = request;
 
   try {
-    const apiUrl = 'https://grandiosesg-gimc.insuremo.com/proposal/v1/application';
+    const apiUrl = 'https://sandbox-sg-gw.insuremo.com/grandiosesg/1.0/pa-bff-app/v1/policy/application';
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0];
 
