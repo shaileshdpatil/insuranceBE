@@ -66,7 +66,7 @@ const getcmotor= async(req,res)=>{
          // Define the base URL of the API
         const baseUrl = 'https://grandiosesg-sandbox-sg.insuremo.com';
       // Append the endpoint to the base URL
-        const apiUrl = `${baseUrl}/cas/ebao/v1/json/tickets`;
+        const apiUrl = `${baseUrl}/cas/ebao/v2/json/tickets`;
       // Data to be sent in the request body
         const requestData = {
             username: 'Grandiose.User',
@@ -76,18 +76,18 @@ const getcmotor= async(req,res)=>{
 
         const response = await axios.post(apiUrl, requestData, {
             headers: {
-            'Content-Type': 'application/json'
+                'x-mo-client-id':"key",
+                'x-mo-tenant-id':"grandiosesg",
+                'x-mo-user-source-id':"platform",
             }
         });
-       
-        const apiMasterUrl = `${baseUrl}/api/platform/dd/code/cache/v1/record/list/byName?name=CMOTOR_VehicleMaster`;
+        const apiMasterUrl = `${baseUrl}/api/platform/dd/code/cache/v1/record/list/byName?name=VPC_VehicleMaster`;
         const responseMaster = await axios.post(apiMasterUrl,requestData,  {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${response.data.access_token}`
             }
           });
-          console.log(responseMaster.data);
           res.status(200).json(responseMaster.data);
     }catch(error){
         console.error('Error fetching data:', error);
