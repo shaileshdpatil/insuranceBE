@@ -19,7 +19,7 @@ const organizationRoleInsert = async(req,res)=>{
         res.status(500).json({ message: error.message });
     }
 }
-const InsuranceRoleInsert = async (req, res) => {
+const InsuranceRoleInsert = async (req,     res) => {
     try {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -64,9 +64,9 @@ const getcmotor= async(req,res)=>{
         res.setHeader('Access-Control-Allow-Methods', 'GET');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
          // Define the base URL of the API
-        const baseUrl = 'https://grandiosesg-gimc.insuremo.com';      
+        const baseUrl = 'https://grandiosesg-sandbox-sg.insuremo.com';
       // Append the endpoint to the base URL
-        const apiUrl = `${baseUrl}/v1/json/tickets`;  
+        const apiUrl = `${baseUrl}/cas/ebao/v1/json/tickets`;
       // Data to be sent in the request body
         const requestData = {
             username: 'Grandiose.User1',
@@ -80,7 +80,7 @@ const getcmotor= async(req,res)=>{
             }
         });
        
-        const apiMasterUrl = 'https://grandiosesg-gimc.insuremo.com/api/platform/dd/code/cache/v1/record/list/byName?name=CMOTOR_VehicleMaster';
+        const apiMasterUrl = `${baseUrl}/api/platform/dd/code/cache/v1/record/list/byName?name=CMOTOR_VehicleMaster`;
         const responseMaster = await axios.post(apiMasterUrl,requestData,  {
             headers: {
               'Content-Type': 'application/json',
